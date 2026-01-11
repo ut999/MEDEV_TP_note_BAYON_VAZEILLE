@@ -31,7 +31,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name : Build and analyze
-        working-directory : ProjetTP # Indique que les commandes doivent s ’ executer dans ce dossier
+        working-directory : Projet_Maven # Indique que les commandes doivent s ’ executer dans ce dossier
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ut999_MEDEV_TP_note_BAYON_VAZEILLE -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml -Dsonar.java.binaries=target/classes
