@@ -10,5 +10,6 @@
         <maven.compiler.release>21</maven.compiler.release>
         <exec.mainClass>ecn.infosi.projet_maven.Projet_Maven</exec.mainClass>
         <sonar.organization>ut999</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 </project>
