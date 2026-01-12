@@ -16,10 +16,12 @@ public class Jeu {
         EtatJeu jeu = new EtatJeu(); 
 
         Input in = new Input();
-        int gamemode = in.chooseGameMode();
+        jeu.setGameMode(in.chooseGameMode());
         
-        if (gamemode == 0) {
-            
+        if (jeu.getGameMode() == 0) {
+            String dictionnary_name = in.inputDictionnaireName();
+            Dictionnaire dict = new Dictionnaire(dictionnary_name);
+            jeu.setWordToGuess(dict.randomWord());
         }
         else {
             jeu.setWordToGuess(in.readMysteryWord(jeu.getMaxWordSize()));
@@ -54,5 +56,7 @@ public class Jeu {
                 jeu.setGameState(-1);  // Game over
             }
         }
+        
+        
     }
 }

@@ -23,9 +23,10 @@ public class Dictionnaire {
 
     /**
      * Constructor with initial configuration
+     * @param pathFile
      */
-    public Dictionnaire() {
-        this.pathFile = "dictionnaires/init.txt";
+    public Dictionnaire(String pathFile) {
+        this.pathFile = "dictionnaires/" + pathFile;
         this.words = new ArrayList<>();
         this.seed = new Random();
     }
