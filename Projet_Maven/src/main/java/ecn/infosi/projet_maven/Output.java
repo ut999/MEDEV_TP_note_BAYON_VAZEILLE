@@ -11,11 +11,16 @@ package ecn.infosi.projet_maven;
 public class Output {  
     public void affichageDebutJeu()
     {
-        
     }
     
     public void affichageTourJeu(EtatJeu etatJeu)
     {
+        System.out.println("------------------------------------");
+        dessinPendu(etatJeu.getCurrentError(), etatJeu.getMaxErrors());
+        System.out.println("mot actuel : ");
+        for(String s : etatJeu.getGuessedLetters())
+        
+        System.out.println("Liste des lettres deja donnees : ");
         
     }
     
