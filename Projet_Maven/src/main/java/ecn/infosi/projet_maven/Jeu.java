@@ -25,12 +25,14 @@ public class Jeu {
         if (jeu.getGameMode() == 0) {
             String dictionnary_name = in.inputDictionnaireName();
             Dictionnaire dict = new Dictionnaire(dictionnary_name);
+            dict.load();
             jeu.setWordToGuess(dict.randomWord());
         }
         else {
             jeu.setWordToGuess(in.readMysteryWord(jeu.getMaxWordSize()));
         }
-        int maxErrors = in.readMaxErrorsAllowed(jeu.getMaxAllowed());
+        
+        jeu.setMaxErrors(in.readMaxErrorsAllowed(jeu.getMaxAllowed()));
         
         for (char letter : jeu.getWordToGuess().toCharArray()) {
             jeu.setShowGuessedLetters(jeu.getShowGuessedLetters().concat("_ "));
@@ -51,6 +53,22 @@ public class Jeu {
 
             if (jeu.getWordLetters().contains(letter)) {
                 jeu.getWordLetters().remove(letter);
+                
+                int i = 0;
+                String temp = new String();
+                for (char l : jeu.getWordToGuess().toCharArray()) {
+                    String str = String.valueOf(l);
+                    if (str.equals(letter)) {
+                        temp = temp.concat(str + " ");
+                    }
+                    else {
+                        String stemp = jeu.getShowGuessedLetters();
+                        temp = temp.concat(String.valueOf(stemp.charAt(i)) + " ");
+                    }
+                    i+=2;
+                }
+                jeu.setShowGuessedLetters(temp);
+                
             } else {
                 jeu.setCurrentError(jeu.getCurrentError() + 1);
             }
@@ -59,7 +77,7 @@ public class Jeu {
                 jeu.setGameState(1);   // Win
                 out.affichageVictoire(jeu);
             } else if (jeu.getCurrentTurn() >= jeu.getMaxTurns()
-                    || jeu.getCurrentError() >= maxErrors) {
+                    || jeu.getCurrentError() >= jeu.getMaxErrors()) {
                 jeu.setGameState(-1);  // Game over
                 out.affichageDefaite(jeu);
             }
