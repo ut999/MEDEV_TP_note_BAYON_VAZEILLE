@@ -15,6 +15,7 @@ public class EtatJeu {
     private ArrayList<String> guessedLetters;   // lettres déjà proposées
     private ArrayList<String> wordLetters;  // lettres du mot recherché
     private int currentError;
+    private int maxErrors;
     private int maxAllowed;
     private int currentTurn;
     private int maxTurns;
@@ -28,6 +29,7 @@ public class EtatJeu {
         this.guessedLetters = new ArrayList<>();
         this.wordLetters = new ArrayList<>();
         this.currentError = 0;
+        this.maxErrors = 0;
         this.maxAllowed = 0;
         this.currentTurn = 0;
         this.maxTurns = 27;
@@ -60,6 +62,14 @@ public class EtatJeu {
 
     public void setCurrentError(int currentError) {
         this.currentError = currentError;
+    }
+
+    public int getMaxErrors() {
+        return maxErrors;
+    }
+
+    public void setMaxErrors(int maxErrors) {
+        this.maxErrors = maxErrors;
     }
 
     public int getMaxAllowed() {
