@@ -12,8 +12,8 @@ import java.util.ArrayList;
  */
 public class EtatJeu {
     
-    private ArrayList<String> guessedLetters;   // lettres déjà proposées
-    private ArrayList<String> wordLetters;  // lettres du mot recherché
+    private ArrayList<Character> guessedLetters;   // lettres déjà proposées
+    private ArrayList<Character> wordLetters;  // lettres du mot recherché
     private int currentError;
     private int maxErrors;
     private int currentTurn;
@@ -31,8 +31,41 @@ public class EtatJeu {
         this.wordToGuess = wordToGuess;
         this.maxWordSize = 20;
     }
+    
+    public void init() {
+        for (char letter : this.wordToGuess.toCharArray()) {
+            if (!this.wordLetters.contains(letter)) {
+                this.wordLetters.add(letter);
+            }
+        }
+    }
+    
+    public int playTurn(Character letter) {
+        this.currentTurn++;
 
-    public EtatJeu(ArrayList<String> guessedLetters, ArrayList<String> wordLetters, int currentError, int maxErrors, int currentTurn, int maxTurns, String wordToGuess, int maxWordSize) {
+        if (this.guessedLetters.contains(letter)) {
+            System.out.println("This letter '" + letter + "' is already guessed");
+        } else {
+            this.guessedLetters.add(letter);
+
+            if (this.wordLetters.contains(letter)) {
+                this.wordLetters.remove(letter);
+            } else {
+                this.currentError++;
+            }
+        }
+
+        if (this.wordLetters.isEmpty()) {
+            return 1;
+        } else if (this.currentTurn >= this.maxTurns || this.currentError >= this.maxErrors) {
+            return -1;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public EtatJeu(ArrayList<Character> guessedLetters, ArrayList<Character> wordLetters, int currentError, int maxErrors, int currentTurn, int maxTurns, String wordToGuess, int maxWordSize) {
         this.guessedLetters = guessedLetters;
         this.wordLetters = wordLetters;
         this.currentError = currentError;
@@ -42,21 +75,20 @@ public class EtatJeu {
         this.wordToGuess = wordToGuess;
         this.maxWordSize = maxWordSize;
     }
-    
 
-    public ArrayList<String> getGuessedLetters() {
+    public ArrayList<Character> getGuessedLetters() {
         return guessedLetters;
     }
 
-    public void setGuessedLetters(ArrayList<String> guessedLetters) {
+    public void setGuessedLetters(ArrayList<Character> guessedLetters) {
         this.guessedLetters = guessedLetters;
     }
 
-    public ArrayList<String> getWordLetters() {
+    public ArrayList<Character> getWordLetters() {
         return wordLetters;
     }
 
-    public void setWordLetters(ArrayList<String> wordLetters) {
+    public void setWordLetters(ArrayList<Character> wordLetters) {
         this.wordLetters = wordLetters;
     }
 
