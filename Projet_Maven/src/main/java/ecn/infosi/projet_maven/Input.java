@@ -91,7 +91,7 @@ public class Input {
             if(isInputCorrect)
             {
                 wordInput = wordInput.toLowerCase();
-                System.out.println("Vous avez ecris le mot : " + charInput); 
+                System.out.println("Vous avez ecris le mot : " + wordInput); 
                 System.out.println("Cela vous convient il ? (Y/N)"); 
 
                 String goodInput = myObj.nextLine();  // Read user input
