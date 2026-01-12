@@ -5,10 +5,14 @@
 package ecn.infosi.projet_maven;
 
 /**
- *
+ * Manage les outputs de l'application
  * @author Clément
  */
 public class Output {  
+
+    /**
+     *  Fonction d'affichage du debut du jeu
+     *
     public void affichageDebutJeu()
     {
         System.out.println("Bienvenue dans notre jeu du pendu");
@@ -17,6 +21,10 @@ public class Output {
         System.out.println("2. Jouer contre un autre joueur, un premier joueur ecris un mot puis un second doit devenir  ce mot.");
     }
     
+    /**
+     *  Fonction d'affichage d'un tour de jeu
+     * @param etatJeu etat actuel du jeu
+     */
     public void affichageTourJeu(EtatJeu etatJeu)
     {
         System.out.println();
@@ -47,6 +55,10 @@ public class Output {
         
     }
     
+    /**
+     *  Fonction d'affichage de la victoire d'un joueur
+     * @param etatJeu
+     */
     public void affichageVictoire(EtatJeu etatJeu)
     {
         System.out.println();
@@ -70,6 +82,10 @@ public class Output {
         
     }
     
+    /**
+     *  fonction d'affichage de la defaite d'un joueur
+     * @param etatJeu
+     */
     public void affichageDefaite(EtatJeu etatJeu)
     {
         System.out.println();

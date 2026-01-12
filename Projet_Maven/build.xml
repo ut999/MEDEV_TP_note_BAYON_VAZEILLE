@@ -31,7 +31,7 @@
     </path>
 	
 	<target name="build" description="Build the application"
-	depends="clean, test, jar" />
+	depends="clean, test, jar, javadoc" />
 	
 		<echo message="Cleaning old build..."/>
 		<target name="clean" depends="checkDependencies">
@@ -65,6 +65,12 @@
 					<attribute name="Main-Class" value="ecn.infosi.projet_maven.Projet_Maven"/>
 				  </manifest>
 				  </jar>
+		</target>
+		
+		<target name="javadoc" depends="compile">
+			 <javadoc destdir="${build.location}/documentation">
+				<fileset dir="${src.location}/main" />
+			</javadoc>
 		</target>
 		
 		<target name="test" depends="compile">
