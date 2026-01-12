@@ -45,7 +45,7 @@ public class EtatJeu {
 
     /**
      * Getter of guessed letters
-     * @return
+     * @return guessed letters
      */
     public ArrayList<String> getGuessedLetters() {
         return guessedLetters;
@@ -61,7 +61,7 @@ public class EtatJeu {
 
     /**
      * Getter of word letters
-     * @return
+     * @return word letters
      */
     public ArrayList<String> getWordLetters() {
         return wordLetters;
@@ -77,7 +77,7 @@ public class EtatJeu {
 
     /**
      * Getter of current error
-     * @return
+     * @return current error
      */
     public int getCurrentError() {
         return currentError;
@@ -93,7 +93,7 @@ public class EtatJeu {
 
     /**
      * Getter of max error choosed
-     * @return
+     * @return max error choosed
      */
     public int getMaxErrors() {
         return maxErrors;
@@ -109,7 +109,7 @@ public class EtatJeu {
 
     /**
      * Getter of max error allowed
-     * @return
+     * @return max error allowed
      */
     public int getMaxAllowed() {
         return maxAllowed;
@@ -125,7 +125,7 @@ public class EtatJeu {
     
     /**
      * Getter of current turn
-     * @return
+     * @return current turn
      */
     public int getCurrentTurn() {
         return currentTurn;
@@ -141,7 +141,7 @@ public class EtatJeu {
 
     /**
      * Getter of max turns
-     * @return
+     * @return max turns
      */
     public int getMaxTurns() {
         return maxTurns;
@@ -157,7 +157,7 @@ public class EtatJeu {
 
     /**
      * Getter of word to guess
-     * @return
+     * @return word to guess
      */
     public String getWordToGuess() {
         return wordToGuess;
@@ -173,7 +173,7 @@ public class EtatJeu {
 
     /**
      * Getter of maximum word size
-     * @return
+     * @return maximum word size
      */
     public int getMaxWordSize() {
         return maxWordSize;
@@ -189,7 +189,7 @@ public class EtatJeu {
 
     /**
      * Getter of gamemode
-     * @return
+     * @return gamemode
      */
     public int getGameMode() {
         return gameMode;
@@ -205,7 +205,7 @@ public class EtatJeu {
 
     /**
      * Getter of show guessed letters
-     * @return
+     * @return show guessed letters
      */
     public String getShowGuessedLetters() {
         return showGuessedLetters;
@@ -221,7 +221,7 @@ public class EtatJeu {
 
     /**
      * Getter of gamestate
-     * @return
+     * @return gamestate
      */
     public int getGameState() {
         return gameState;
