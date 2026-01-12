@@ -43,6 +43,7 @@
         <mkdir dir="build/documentation"/>
         <mkdir dir="build/classes"/>
         <mkdir dir="build/jar"/>
+        <mkdir dir="build/jar/dictionnaires"/>
         <mkdir dir="build/test"/>
         <mkdir dir="build/test-report"/>
 		</target>
