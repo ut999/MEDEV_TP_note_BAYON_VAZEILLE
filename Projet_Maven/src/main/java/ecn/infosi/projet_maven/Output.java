@@ -13,6 +13,8 @@ public class Output {
     /**
      *  Fonction d'affichage du debut du jeu
      *
+     * 
+     */
     public void affichageDebutJeu()
     {
         System.out.println("Bienvenue dans notre jeu du pendu");
