@@ -35,7 +35,7 @@ public class EtatJeu {
         this.maxWordSize = 20;
         this.gameMode = 0;
         this.showGuessedLetters = "";
-        this.gameState = 0:
+        this.gameState = 0;
     }
 
     public ArrayList<String> getGuessedLetters() {
@@ -118,7 +118,11 @@ public class EtatJeu {
         this.showGuessedLetters = showGuessedLetters;
     }
 
-    
-    
-    
+    public int getGameState() {
+        return gameState;
+    }
+
+    public void setGameState(int gameState) {
+        this.gameState = gameState;
+    }
 }
