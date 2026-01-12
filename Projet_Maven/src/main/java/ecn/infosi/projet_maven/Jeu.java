@@ -73,19 +73,26 @@ public class Jeu {
                 jeu.setCurrentError(jeu.getCurrentError() + 1);
             }
 
-            if (jeu.getWordLetters().isEmpty()) {
+            if (hasPlayerWon(jeu)) {
                 jeu.setGameState(1);   // Win
                 out.affichageVictoire(jeu);
-            } else if (jeu.getCurrentTurn() >= jeu.getMaxTurns()
-                    || jeu.getCurrentError() >= jeu.getMaxErrors()) {
+            } else if (hasPlayerLost(jeu)) {
                 jeu.setGameState(-1);  // Game over
                 out.affichageDefaite(jeu);
             }
             else {
                 out.affichageTourJeu(jeu);
             }
-        }
-        
-        
+        } 
+    }
+    
+    public boolean hasPlayerWon(EtatJeu jeu)
+    {
+        return(jeu.getWordLetters().isEmpty());
+    }
+    public boolean hasPlayerLost(EtatJeu jeu)
+    {
+        return(jeu.getCurrentTurn() >= jeu.getMaxTurns()
+                    || jeu.getCurrentError() >= jeu.getMaxErrors());
     }
 }
