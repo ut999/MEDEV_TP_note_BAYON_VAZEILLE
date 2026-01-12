@@ -15,7 +15,7 @@ public class EtatJeu {
     private ArrayList<String> guessedLetters;   // lettres déjà proposées
     private ArrayList<String> wordLetters;  // lettres du mot recherché
     private int currentError;
-    private int maxErrors;
+    private int maxAllowed;
     private int currentTurn;
     private int maxTurns;
     private String wordToGuess;
@@ -27,7 +27,7 @@ public class EtatJeu {
         this.guessedLetters = new ArrayList<>();
         this.wordLetters = new ArrayList<>();
         this.currentError = 0;
-        this.maxErrors = 10;
+        this.maxAllowed = 0;
         this.currentTurn = 0;
         this.maxTurns = 27;
         this.wordToGuess = "";
@@ -36,21 +36,21 @@ public class EtatJeu {
         this.showGuessedLetters = "";
     }
     
-    public void print
-    
     public void play() {
         
-        for (char letter : this.wordToGuess) {
-            if (!this.wordLetters.contains(letter)) {
-                this.wordLetters.add(letter);
-            }
-        }
-        this
-        int gameState = 0;
+//        for (char letter : this.wordToGuess) {
+//            if (!this.wordLetters.contains(letter)) {
+//                this.wordLetters.add(letter);
+//            }
+//        }
+
         Input in = new Input();
+        this.wordToGuess = in.readMysteryWord(this.maxWordSize);
+        this.maxErrors = in.readMaxErrorsAllowed();
+        int gameState = 0; // 1 for win, -1 for lose
         
         while (gameState == 0) {
-            String letter = readPlayerCharacterTry(this.guessedLetters);
+            String letter = in.readPlayerCharacterTry(this.guessedLetters);
             this.currentTurn++;
 
             this.guessedLetters.add(letter);
@@ -69,19 +69,19 @@ public class EtatJeu {
         }
     }
 
-    public ArrayList<Character> getGuessedLetters() {
+    public ArrayList<String> getGuessedLetters() {
         return guessedLetters;
     }
 
-    public void setGuessedLetters(ArrayList<Character> guessedLetters) {
+    public void setGuessedLetters(ArrayList<String> guessedLetters) {
         this.guessedLetters = guessedLetters;
     }
 
-    public ArrayList<Character> getWordLetters() {
+    public ArrayList<String> getWordLetters() {
         return wordLetters;
     }
 
-    public void setWordLetters(ArrayList<Character> wordLetters) {
+    public void setWordLetters(ArrayList<String> wordLetters) {
         this.wordLetters = wordLetters;
     }
 
@@ -93,12 +93,12 @@ public class EtatJeu {
         this.currentError = currentError;
     }
 
-    public int getMaxErrors() {
-        return maxErrors;
+    public int getMaxAllowed() {
+        return maxAllowed;
     }
 
-    public void setMaxErrors(int maxErrors) {
-        this.maxErrors = maxErrors;
+    public void setMaxAllowed(int maxErrors) {
+        this.maxAllowed = maxErrors;
     }
     
     public int getCurrentTurn() {
