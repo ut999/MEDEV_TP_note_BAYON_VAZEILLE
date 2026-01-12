@@ -22,6 +22,7 @@ public class EtatJeu {
     private int maxWordSize;
     private int gameMode;
     private String showGuessedLetters;
+    private int gameState;
 
     public EtatJeu() {
         this.guessedLetters = new ArrayList<>();
@@ -34,39 +35,7 @@ public class EtatJeu {
         this.maxWordSize = 20;
         this.gameMode = 0;
         this.showGuessedLetters = "";
-    }
-    
-    public void play() {
-        
-//        for (char letter : this.wordToGuess) {
-//            if (!this.wordLetters.contains(letter)) {
-//                this.wordLetters.add(letter);
-//            }
-//        }
-
-        Input in = new Input();
-        this.wordToGuess = in.readMysteryWord(this.maxWordSize);
-        this.maxErrors = in.readMaxErrorsAllowed();
-        int gameState = 0; // 1 for win, -1 for lose
-        
-        while (gameState == 0) {
-            String letter = in.readPlayerCharacterTry(this.guessedLetters);
-            this.currentTurn++;
-
-            this.guessedLetters.add(letter);
-
-            if (this.wordLetters.contains(letter)) {
-                this.wordLetters.remove(letter);
-            } else {
-                this.currentError++;
-            }
-
-            if (this.wordLetters.isEmpty()) {
-                gameState = 1;
-            } else if (this.currentTurn >= this.maxTurns || this.currentError >= this.maxErrors) {
-                gameState = -1;
-            }
-        }
+        this.gameState = 0:
     }
 
     public ArrayList<String> getGuessedLetters() {
@@ -139,6 +108,14 @@ public class EtatJeu {
 
     public void setGameMode(int gameMode) {
         this.gameMode = gameMode;
+    }
+
+    public String getShowGuessedLetters() {
+        return showGuessedLetters;
+    }
+
+    public void setShowGuessedLetters(String showGuessedLetters) {
+        this.showGuessedLetters = showGuessedLetters;
     }
 
     
