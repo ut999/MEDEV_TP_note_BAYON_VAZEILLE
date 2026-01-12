@@ -30,7 +30,7 @@ public class EtatJeu {
         this.wordLetters = new ArrayList<>();
         this.currentError = 0;
         this.maxErrors = 0;
-        this.maxAllowed = 0;
+        this.maxAllowed = 27;
         this.currentTurn = 0;
         this.maxTurns = 27;
         this.wordToGuess = "";

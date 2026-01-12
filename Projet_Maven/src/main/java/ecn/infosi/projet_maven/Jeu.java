@@ -16,6 +16,10 @@ public class Jeu {
         EtatJeu jeu = new EtatJeu(); 
 
         Input in = new Input();
+        Output out = new Output();
+        
+        out.affichageDebutJeu();
+        
         jeu.setGameMode(in.chooseGameMode());
         
         if (jeu.getGameMode() == 0) {
@@ -29,11 +33,13 @@ public class Jeu {
         int maxErrors = in.readMaxErrorsAllowed(jeu.getMaxAllowed());
         
         for (char letter : jeu.getWordToGuess().toCharArray()) {
+            jeu.setShowGuessedLetters(jeu.getShowGuessedLetters().concat("_ "));
             String str = String.valueOf(letter);
             if (!jeu.getWordLetters().contains(str)) {
                 jeu.getWordLetters().add(str);
             }
         }
+        
         
         while (jeu.getGameState() == 0) {
 
@@ -51,9 +57,14 @@ public class Jeu {
 
             if (jeu.getWordLetters().isEmpty()) {
                 jeu.setGameState(1);   // Win
+                out.affichageVictoire(jeu);
             } else if (jeu.getCurrentTurn() >= jeu.getMaxTurns()
                     || jeu.getCurrentError() >= maxErrors) {
                 jeu.setGameState(-1);  // Game over
+                out.affichageDefaite(jeu);
+            }
+            else {
+                out.affichageTourJeu(jeu);
             }
         }
         
