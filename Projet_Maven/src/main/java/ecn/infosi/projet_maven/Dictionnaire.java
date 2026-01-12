@@ -10,6 +10,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+import java.security.SecureRandom;
+
 
 /**
  * Manage dictionnary and words for pendu game
@@ -28,7 +30,7 @@ public class Dictionnaire {
     public Dictionnaire(String pathFile) {
         this.pathFile = "dictionnaires/" + pathFile;
         this.words = new ArrayList<>();
-        this.seed = new Random();
+        this.seed = new SecureRandom();
     }
 
     /**
