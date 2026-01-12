@@ -41,7 +41,7 @@ public class Output {
         System.out.println("Tour n°" + etatJeu.getCurrentTurn());
         
         
-        System.out.println("nombre d'erreurs commises : " + etatJeu.getWordToGuess());
+        System.out.println("nombre d'erreurs commises : " + etatJeu.getCurrentError());
         System.out.println("nombre d'erreurs maximum : " + etatJeu.getMaxErrors());
         dessinPendu(etatJeu.getCurrentError(), etatJeu.getMaxErrors());
         System.out.println("mot actuel : " + etatJeu.getShowGuessedLetters());
