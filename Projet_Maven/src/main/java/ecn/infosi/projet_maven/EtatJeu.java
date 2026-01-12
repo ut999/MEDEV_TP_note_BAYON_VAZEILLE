@@ -12,40 +12,47 @@ import java.util.ArrayList;
  */
 public class EtatJeu {
     
-    private ArrayList<Character> guessedLetters;   // lettres déjà proposées
-    private ArrayList<Character> wordLetters;  // lettres du mot recherché
+    private ArrayList<String> guessedLetters;   // lettres déjà proposées
+    private ArrayList<String> wordLetters;  // lettres du mot recherché
     private int currentError;
     private int maxErrors;
     private int currentTurn;
     private int maxTurns;
     private String wordToGuess;
     private int maxWordSize;
+    private int gameMode;
+    private String showGuessedLetters;
 
-    public EtatJeu(String wordToGuess, int maxErrors, int maxTurns) {
+    public EtatJeu() {
         this.guessedLetters = new ArrayList<>();
         this.wordLetters = new ArrayList<>();
         this.currentError = 0;
-        this.maxErrors = maxErrors;
+        this.maxErrors = 10;
         this.currentTurn = 0;
-        this.maxTurns = maxTurns;
-        this.wordToGuess = wordToGuess;
+        this.maxTurns = 27;
+        this.wordToGuess = "";
         this.maxWordSize = 20;
+        this.gameMode = 0;
+        this.showGuessedLetters = "";
     }
     
-    public void init() {
-        for (char letter : this.wordToGuess.toCharArray()) {
+    public void print
+    
+    public void play() {
+        
+        for (char letter : this.wordToGuess) {
             if (!this.wordLetters.contains(letter)) {
                 this.wordLetters.add(letter);
             }
         }
-    }
-    
-    public int playTurn(Character letter) {
-        this.currentTurn++;
+        this
+        int gameState = 0;
+        Input in = new Input();
+        
+        while (gameState == 0) {
+            String letter = readPlayerCharacterTry(this.guessedLetters);
+            this.currentTurn++;
 
-        if (this.guessedLetters.contains(letter)) {
-            System.out.println("This letter '" + letter + "' is already guessed");
-        } else {
             this.guessedLetters.add(letter);
 
             if (this.wordLetters.contains(letter)) {
@@ -53,27 +60,13 @@ public class EtatJeu {
             } else {
                 this.currentError++;
             }
-        }
 
-        if (this.wordLetters.isEmpty()) {
-            return 1;
-        } else if (this.currentTurn >= this.maxTurns || this.currentError >= this.maxErrors) {
-            return -1;
+            if (this.wordLetters.isEmpty()) {
+                gameState = 1;
+            } else if (this.currentTurn >= this.maxTurns || this.currentError >= this.maxErrors) {
+                gameState = -1;
+            }
         }
-        else {
-            return 0;
-        }
-    }
-
-    public EtatJeu(ArrayList<Character> guessedLetters, ArrayList<Character> wordLetters, int currentError, int maxErrors, int currentTurn, int maxTurns, String wordToGuess, int maxWordSize) {
-        this.guessedLetters = guessedLetters;
-        this.wordLetters = wordLetters;
-        this.currentError = currentError;
-        this.maxErrors = maxErrors;
-        this.currentTurn = currentTurn;
-        this.maxTurns = maxTurns;
-        this.wordToGuess = wordToGuess;
-        this.maxWordSize = maxWordSize;
     }
 
     public ArrayList<Character> getGuessedLetters() {
@@ -140,6 +133,15 @@ public class EtatJeu {
         this.maxWordSize = maxWordSize;
     }
 
+    public int getGameMode() {
+        return gameMode;
+    }
+
+    public void setGameMode(int gameMode) {
+        this.gameMode = gameMode;
+    }
+
+    
     
     
 }
