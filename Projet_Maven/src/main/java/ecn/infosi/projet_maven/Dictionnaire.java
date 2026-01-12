@@ -43,14 +43,12 @@ public class Dictionnaire {
         catch(IOException e){
             System.out.println("Error loading file");
         }
-        try {
-            BufferedReader buffReader = new BufferedReader(reader);
+        try (BufferedReader buffReader = new BufferedReader(reader)) {
             String word;
             while ((word = buffReader.readLine()) != null) {
                 this.words.add(word);
             }
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Error reading file");
         }
     }
