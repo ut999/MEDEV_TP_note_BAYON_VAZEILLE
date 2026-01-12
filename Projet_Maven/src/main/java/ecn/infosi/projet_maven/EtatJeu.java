@@ -14,23 +14,29 @@ public class EtatJeu {
     
     private ArrayList<String> guessedLetters;   // lettres déjà proposées
     private ArrayList<String> wordLetters;  // lettres du mot recherché
+    private int currentError;
+    private int maxErrors;
     private int currentTurn;
     private int maxTurns;
     private String wordToGuess;
     private int maxWordSize;
 
-    public EtatJeu(String wordToGuess, int maxTurns) {
+    public EtatJeu(String wordToGuess, int maxErrors, int maxTurns) {
         this.guessedLetters = new ArrayList<>();
         this.wordLetters = new ArrayList<>();
+        this.currentError = 0;
+        this.maxErrors = maxErrors;
         this.currentTurn = 0;
         this.maxTurns = maxTurns;
         this.wordToGuess = wordToGuess;
         this.maxWordSize = 20;
     }
 
-    public EtatJeu(ArrayList<String> guessedLetters, ArrayList<String> wordLetters, int currentTurn, int maxTurns, String wordToGuess, int maxWordSize) {
+    public EtatJeu(ArrayList<String> guessedLetters, ArrayList<String> wordLetters, int currentError, int maxErrors, int currentTurn, int maxTurns, String wordToGuess, int maxWordSize) {
         this.guessedLetters = guessedLetters;
         this.wordLetters = wordLetters;
+        this.currentError = currentError;
+        this.maxErrors = maxErrors;
         this.currentTurn = currentTurn;
         this.maxTurns = maxTurns;
         this.wordToGuess = wordToGuess;
@@ -54,6 +60,22 @@ public class EtatJeu {
         this.wordLetters = wordLetters;
     }
 
+    public int getCurrentError() {
+        return currentError;
+    }
+
+    public void setCurrentError(int currentError) {
+        this.currentError = currentError;
+    }
+
+    public int getMaxErrors() {
+        return maxErrors;
+    }
+
+    public void setMaxErrors(int maxErrors) {
+        this.maxErrors = maxErrors;
+    }
+    
     public int getCurrentTurn() {
         return currentTurn;
     }
